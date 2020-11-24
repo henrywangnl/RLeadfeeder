@@ -6,9 +6,14 @@ Authors@R:
            family = "Wang",
            role = c("cre", "aut"),
            email = "henrywangnl@gmail.com")
-Description: Working with Leadfeeder API
+Description: This is an R package for you to work with Leadfeeder API. It contains some handy functions to pull the data from Leadfeeder for further analysis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
+Suggests: 
+    testthat
+Imports: 
+    keyring,
+    methods
