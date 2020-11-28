@@ -4,7 +4,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_accounts()
+#' }
+
 get_accounts <- function() {
  url <- httr::modify_url(
    base_url(),

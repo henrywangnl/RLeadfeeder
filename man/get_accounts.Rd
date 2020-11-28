@@ -13,5 +13,7 @@ data frame of accounts the user has access to
 Get accounts
 }
 \examples{
+\dontrun{
 get_accounts()
+}
 }
