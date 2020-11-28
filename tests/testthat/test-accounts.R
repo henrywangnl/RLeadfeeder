@@ -1,4 +1,4 @@
 test_that("get_accounts works", {
-  skip_on_cran()
+  skip("skip test on Github Action")
   expect_type(get_accounts(), "list")
 })
