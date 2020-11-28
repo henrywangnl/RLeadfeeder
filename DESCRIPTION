@@ -16,4 +16,8 @@ Suggests:
     testthat
 Imports: 
     keyring,
-    methods
+    methods,
+    glue,
+    httr,
+    tibble,
+    purrr
