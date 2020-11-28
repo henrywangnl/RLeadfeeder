@@ -6,7 +6,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_token()
+#' }
 get_token <- function() {
   token <- try(keyring::key_get("rleadfeeder"), silent = TRUE)
 
