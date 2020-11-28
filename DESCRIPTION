@@ -20,5 +20,6 @@ Imports:
     glue,
     httr,
     tibble,
-    purrr
+    purrr,
+    magrittr
 URL: https://henrywangnl.github.io/RLeadfeeder/, https://github.com/henrywangnl/RLeadfeeder
