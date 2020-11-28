@@ -13,5 +13,7 @@ The Leadfeeder API token
 Get your Leadfeeder API token
 }
 \examples{
+\dontrun{
 get_token()
+}
 }
