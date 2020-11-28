@@ -2,5 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-11-28T18:40Z
+last_built: 2020-11-28T18:45Z
+urls:
+  reference: https://henrywangnl.github.io/RLeadfeeder//reference
+  article: https://henrywangnl.github.io/RLeadfeeder//articles
 
