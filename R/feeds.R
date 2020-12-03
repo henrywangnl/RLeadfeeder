@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_feeds()
+#' get_feeds(account_id = "12345")
 #' }
 get_feeds <- function(account_id = NULL) {
   

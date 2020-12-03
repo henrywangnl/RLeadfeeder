@@ -3,6 +3,7 @@
 export("%>%")
 export(get_accounts)
 export(get_feeds)
+export(get_leads)
 export(get_token)
 export(set_token)
 importFrom(magrittr,"%>%")

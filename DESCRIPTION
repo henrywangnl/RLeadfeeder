@@ -21,5 +21,6 @@ Imports:
     httr,
     tibble,
     purrr,
-    magrittr
+    magrittr,
+    dplyr
 URL: https://henrywangnl.github.io/RLeadfeeder/, https://github.com/henrywangnl/RLeadfeeder
