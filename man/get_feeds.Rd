@@ -17,6 +17,7 @@ Get custom feeds list for an account
 }
 \examples{
 \dontrun{
+
 get_feeds(account_id = "12345")
 }
 }

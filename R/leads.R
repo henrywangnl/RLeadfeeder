@@ -9,8 +9,12 @@
 #'
 #' @examples
 #' \dontrun{
+#' 
 #' get_leads(
-#' account_id = "12345", start_date = "2020-11-01", end_date = "2020-11-30")
+#'    account_id = "12345", 
+#'    start_date = "2020-11-01", 
+#'    end_date = "2020-11-30"
+#' )
 #' }
 get_leads <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
   if(is.null(account_id)) {
