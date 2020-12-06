@@ -78,13 +78,57 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"henrywangnl/RLeadfeeder"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
+<div id="authentication" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<a href="#authentication" class="anchor"></a>Authentication</h2>
+<p>Leadfeeder API expects an API token to be included in all requests sent to the server.</p>
+<p>You can generate your unique authentication token at <a href="https://app.leadfeeder.com/l/settings/personal/api-tokens">Leadfeeder API settings</a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://henrywangnl.github.io/RLeadfeeder/">RLeadfeeder</a></span><span class="op">)</span>
-<span class="co">## basic example code</span></code></pre></div>
+
+<span class="co">## Set your Leadfeeder API token</span>
+<span class="fu"><a href="reference/set_token.html">set_token</a></span><span class="op">(</span>token <span class="op">=</span> <span class="st">"YOUR_API_TOKEN"</span><span class="op">)</span>
+<span class="co">#&gt; Token saved!</span>
+
+<span class="co">## Check your Leadfeeder API token</span>
+<span class="fu"><a href="reference/get_token.html">get_token</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [1] "YOUR_API_TOKEN"</span></code></pre></div>
+</div>
+<div id="get-accounts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#get-accounts" class="anchor"></a>Get accounts</h2>
+<p>Retrieve all accounts that you have access to.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_accounts.html">get_accounts</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="get-feeds" class="section level2">
+<h2 class="hasAnchor">
+<a href="#get-feeds" class="anchor"></a>Get feeds</h2>
+<p>Get all the feeds for an Account.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_feeds.html">get_feeds</a></span><span class="op">(</span>account_id <span class="op">=</span> <span class="st">"12345"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="get-leads" class="section level2">
+<h2 class="hasAnchor">
+<a href="#get-leads" class="anchor"></a>Get leads</h2>
+<p>Retrieve a list of leads in an Account on a specific time interval. The total number of results is limited to the first 10000 leads.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_leads.html">get_leads</a></span><span class="op">(</span>
+  account_id <span class="op">=</span> <span class="st">"12345"</span>, 
+  start_date <span class="op">=</span> <span class="st">"2020-11-01"</span>, 
+  end_date <span class="op">=</span> <span class="st">"2020-11-30"</span>
+<span class="op">)</span></code></pre></div>
+</div>
+<div id="get-visits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#get-visits" class="anchor"></a>Get visits</h2>
+<p>Retrieve a list of Visits for all Leads from a specific time interval.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_visits.html">get_visits</a></span><span class="op">(</span>
+   account_id <span class="op">=</span> <span class="st">"12345"</span>, 
+   start_date <span class="op">=</span> <span class="st">"2020-11-01"</span>, 
+   end_date <span class="op">=</span> <span class="st">"2020-11-30"</span>
+<span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
