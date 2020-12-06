@@ -22,5 +22,7 @@ Imports:
     tibble,
     purrr,
     magrittr,
-    dplyr
+    dplyr,
+    tidyr,
+    rlang
 URL: https://henrywangnl.github.io/RLeadfeeder/, https://github.com/henrywangnl/RLeadfeeder
