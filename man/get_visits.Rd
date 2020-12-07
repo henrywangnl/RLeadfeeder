@@ -23,8 +23,8 @@ Get all visits
 \dontrun{
 
 get_visits(
-   account_id = "12345", 
-   start_date = "2020-11-01", 
+   account_id = "12345",
+   start_date = "2020-11-01",
    end_date = "2020-11-30"
 )
 }

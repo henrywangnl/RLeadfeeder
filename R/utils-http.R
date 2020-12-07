@@ -2,7 +2,7 @@ base_url <- function() {
   "https://api.leadfeeder.com"
 }
 
-call_api <- function(url) {
+.call_api <- function(url) {
 
   # Authorization: Token token=yourapitoken
   token <- paste("Token", glue::glue("token={get_token()}"))
@@ -20,3 +20,8 @@ call_api <- function(url) {
 
   httr::content(resp)
 }
+
+call_api <- ratelimitr::limit_rate(
+  .call_api, 
+  ratelimitr::rate(n = 100, period = 60)
+)

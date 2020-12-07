@@ -10,10 +10,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' 
+#'
 #' get_visits(
-#'    account_id = "12345", 
-#'    start_date = "2020-11-01", 
+#'    account_id = "12345",
+#'    start_date = "2020-11-01",
 #'    end_date = "2020-11-30"
 #' )
 #' }
@@ -21,25 +21,26 @@ get_visits <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
   if(is.null(account_id)) {
     stop("account_id is missing")
   }
-  
+
   if(is.null(start_date)) {
     stop("start_date is missing")
   }
-  
+
   if(is.null(end_date)) {
     stop("end_date is missing")
   }
-  
+
   next_page <- ""
   results <- list()
-  
+
   while(!is.null(next_page)) {
     if(next_page == "") {
       url <- httr::modify_url(
         base_url(),
         path = glue::glue("accounts/{account_id}/visits"),
         query = list(start_date = start_date,
-                     end_date = end_date)
+                     end_date = end_date,
+                     `page[size]` = 100)
       )
     } else {
       url <- content$links$`next`
@@ -48,9 +49,9 @@ get_visits <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
     next_page <- content$links$`next`
     results <- c(results, content$data)
   }
-  
-  results %>% 
-    purrr::map(~ c(id = .$id, .$attributes)) %>% 
-    tibble::tibble(visit = .) %>% 
+
+  results %>%
+    purrr::map(~ c(id = .$id, .$attributes)) %>%
+    tibble::tibble(visit = .) %>%
     tidyr::unnest_wider(visit)
 }
