@@ -24,5 +24,6 @@ Imports:
     magrittr,
     dplyr,
     tidyr,
-    rlang
+    rlang,
+    ratelimitr
 URL: https://henrywangnl.github.io/RLeadfeeder/, https://github.com/henrywangnl/RLeadfeeder

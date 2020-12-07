@@ -38,7 +38,8 @@ get_leads <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
         base_url(),
         path = glue::glue("accounts/{account_id}/leads"),
         query = list(start_date = start_date,
-                     end_date = end_date)
+                     end_date = end_date,
+                     `page[size]` = 100)
       )
     } else {
       url <- content$links$`next`
@@ -49,25 +50,20 @@ get_leads <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
     results$included <- c(results$included, content$included)
   }
 
-  data_attr <- results$data %>%
-    purrr::map("attributes") %>%
-    purrr::map_df(purrr::flatten_dfr)
-
-  data <- tibble::tibble(
-    id = purrr::map_chr(results$data, "id"),
-    data_attr,
-    loc_id = purrr::map_chr(results$data, c("relationships", "location", "data", "id"))
-  )
-
-  loc_attr <- results$included %>%
-    purrr::map("attributes") %>%
-    purrr::map_df(purrr::flatten_dfr)
-
-  location <- tibble::tibble(
-    loc_id = purrr::map_chr(results$included, "id"),
-    loc_attr
-  )
-
+  data <- results$data %>%
+    purrr::map(
+      ~ c(id = .$id, .$attributes, loc_id = .$relationships$location$data$id)
+    ) %>% 
+    tibble::tibble(lead = .) %>% 
+    tidyr::unnest_wider(lead)
+  
+  location <- results$included %>%
+    purrr::map(
+      ~ c(loc_id = .$id, .$attributes)
+    ) %>% 
+    tibble::tibble(location = .) %>% 
+    tidyr::unnest_wider(location)
+  
   suppressMessages(dplyr::left_join(data, location)) %>%
     dplyr::distinct()
 }
