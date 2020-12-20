@@ -3,8 +3,9 @@
 #' @param account_id your account id
 #' @param start_date start date (yyyy-mm-dd)
 #' @param end_date end date (yyyy-mm-dd)
+#' @param feed_id custom feed id. NULL by default. 
 #'
-#' @return data frame of all leads
+#' @return data frame of all leads for all the feeds (if feed_id is NULL) or for one specific feed (if feed_id is provided)
 #' @export
 #'
 #' @examples
@@ -16,7 +17,8 @@
 #'    end_date = "2020-11-30"
 #' )
 #' }
-get_leads <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
+get_leads <- function(account_id = NULL, start_date = NULL, 
+                      end_date = NULL, feed_id = NULL) {
   if(is.null(account_id)) {
     stop("account_id is missing")
   }
@@ -31,12 +33,18 @@ get_leads <- function(account_id = NULL, start_date = NULL, end_date = NULL) {
 
   next_page <- ""
   results <- list(data = NULL, included = NULL)
+  
+  if(is.null(feed_id)) {
+    path = glue::glue("accounts/{account_id}/leads")
+  } else {
+    path = glue::glue("accounts/{account_id}/custom-feeds/{feed_id}/leads")
+  }
 
   while(!is.null(next_page)) {
     if(next_page == "") {
       url <- httr::modify_url(
         base_url(),
-        path = glue::glue("accounts/{account_id}/leads"),
+        path = path,
         query = list(start_date = start_date,
                      end_date = end_date,
                      `page[size]` = 100)

@@ -4,7 +4,12 @@
 \alias{get_visits}
 \title{Get all visits}
 \usage{
-get_visits(account_id = NULL, start_date = NULL, end_date = NULL)
+get_visits(
+  account_id = NULL,
+  start_date = NULL,
+  end_date = NULL,
+  lead_id = NULL
+)
 }
 \arguments{
 \item{account_id}{your account id}
@@ -12,9 +17,11 @@ get_visits(account_id = NULL, start_date = NULL, end_date = NULL)
 \item{start_date}{start date (yyyy-mm-dd)}
 
 \item{end_date}{end date (yyyy-mm-dd)}
+
+\item{lead_id}{lead id. NULL by default}
 }
 \value{
-data frame of all visits
+data frame of all visits for all the leads (by default) or for one specific lead (if lead_id is provided)
 }
 \description{
 Get all visits
