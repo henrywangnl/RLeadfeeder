@@ -30,11 +30,9 @@ library(RLeadfeeder)
 
 ## Set your Leadfeeder API token
 set_token(token = "YOUR_API_TOKEN")
-#> Token saved!
 
 ## Check your Leadfeeder API token
 get_token()
-#> [1] "YOUR_API_TOKEN"
 ```
 
 ## Get accounts

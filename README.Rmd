@@ -35,7 +35,7 @@ Leadfeeder API expects an API token to be included in all requests sent to the s
 You can generate your unique authentication token at [Leadfeeder API settings](https://app.leadfeeder.com/l/settings/personal/api-tokens).
 
 
-```{r example}
+```{r token, eval=FALSE}
 library(RLeadfeeder)
 
 ## Set your Leadfeeder API token

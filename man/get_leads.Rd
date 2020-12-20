@@ -4,7 +4,12 @@
 \alias{get_leads}
 \title{Get leads}
 \usage{
-get_leads(account_id = NULL, start_date = NULL, end_date = NULL)
+get_leads(
+  account_id = NULL,
+  start_date = NULL,
+  end_date = NULL,
+  feed_id = NULL
+)
 }
 \arguments{
 \item{account_id}{your account id}
@@ -12,9 +17,11 @@ get_leads(account_id = NULL, start_date = NULL, end_date = NULL)
 \item{start_date}{start date (yyyy-mm-dd)}
 
 \item{end_date}{end date (yyyy-mm-dd)}
+
+\item{feed_id}{custom feed id. NULL by default.}
 }
 \value{
-data frame of all leads
+data frame of all leads for all the feeds (if feed_id is NULL) or for one specific feed (if feed_id is provided)
 }
 \description{
 Get leads
